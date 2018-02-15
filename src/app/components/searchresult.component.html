@@ -1,0 +1,12 @@
+<h2>Search Results</h2>
+
+<h4>
+  <ul align="left" class="pagination">
+    <li *ngFor="let i of contents">
+        <img src="{{ i.image }}" width="96">
+        {{ i.slug }} / {{i.title}}
+
+         <button id="btnSave" type="submit" #btnSave (click)="onClicked(i)" [disabled]="i.disable" >Save</button>
+    </li>
+  </ul>
+  </h4>
