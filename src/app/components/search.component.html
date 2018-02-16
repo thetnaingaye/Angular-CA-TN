@@ -1,25 +1,23 @@
-<form #searchForm="ngForm" (ngSubmit)="processSearch()">
-  <div align="center" >
+<form class="form-inline" #searchForm="ngForm" (ngSubmit)="processSearch()">
 
-  <input type="text" name="username" size="50" 
+  <label>Username:</label>
+  <input class="form-control" type="text" name="username" 
   placeholder="Please enter your name..." required ngModel>
-  <br/>
-
-  <input type="text" name="query" size="50" 
+  <label>Search:</label>
+  <input class="form-control" type="text" name="query" size="50" 
   placeholder="Search by any keyword eg, Trump..." required ngModel>
-  <br/>
 
-  <input type="text" name="result" size="50" 
+  <label>Results:</label>
+  <input class="form-control" type="text" name="result" 
   placeholder="Enter number of results..." required ngModel>
-  <br/>
-  </div>
-  <button type="submit" [disabled]="searchForm.invalid">
+
+  <button class="btn btn-success" type="submit" [disabled]="searchForm.invalid">
     Search
   </button>
 
 </form>
 <div *ngIf="basket.length <= 0">
-  <h2>Results display here....</h2>
+  <img src="https://media1.giphy.com/media/ToMjGpC57TmX0FLDtyU/giphy.gif">
 </div>
 <div *ngIf="basket.length > 0">
   <app-searchresult [contents]="basket">

@@ -1,14 +1,15 @@
-<form #searchForm="ngForm" (ngSubmit)="processSearch()">
-    <input type="text" name="username" size="50" 
+<form class="form-inline" #searchForm="ngForm" (ngSubmit)="processSearch()">
+  <label>Username:</label>  
+  <input class="form-control" type="text" name="username"
     placeholder="Please enter your name..." required ngModel>
-    <br/>
-    <button type="submit" [disabled]="searchForm.invalid">
+
+    <button class="btn btn-success" type="submit" [disabled]="searchForm.invalid">
       Retrive Saved GIFs
     </button>
   
   </form>
   <div *ngIf="basket.length <= 0">
-    <h2>Results display here....</h2>
+    <img src="https://media1.giphy.com/media/ToMjGpC57TmX0FLDtyU/giphy.gif">
   </div>
   <div *ngIf="basket.length > 0">
     <app-searchresult [contents]="basket">
