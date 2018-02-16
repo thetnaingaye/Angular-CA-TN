@@ -9,10 +9,6 @@ import {HttpClient} from "@angular/common/http";
 })
 export class SearchresultComponent implements OnInit {
 
-
-  @ViewChild('itemForm') itemForm: NgForm;
-
-
   @Input() contents: any[] = [];
 
   constructor(private http: HttpClient) { }

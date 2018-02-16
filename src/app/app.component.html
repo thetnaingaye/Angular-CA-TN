@@ -3,5 +3,13 @@
   <h1>
     Welcome to {{ title }}!
   </h1>
+  <a [routerLink] = "['/search']"><strong>Search</strong></a>
+  <a [routerLink] = "['/saved']"><strong>Saved</strong></a>
+  <div class="red-box">
 
-  <app-search></app-search>
+      <router-outlet></router-outlet>
+  </div>
+
+  <!-- <app-search></app-search> -->
+
+  <!-- <button id="btnSavedSearch" type="submit" #btnSave (click)="onClicked(i)" [disabled]="i.disable" >Save</button> -->

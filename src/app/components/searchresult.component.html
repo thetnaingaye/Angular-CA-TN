@@ -4,9 +4,10 @@
   <ul align="left" class="pagination">
     <li *ngFor="let i of contents">
         <img src="{{ i.image }}" width="96">
-        {{ i.slug }} / {{i.title}}
-
+        <div *ngIf="i.slug != nil">
+          {{ i.slug }}
          <button id="btnSave" type="submit" #btnSave (click)="onClicked(i)" [disabled]="i.disable" >Save</button>
+        </div>
     </li>
   </ul>
   </h4>

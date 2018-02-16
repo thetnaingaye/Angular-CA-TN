@@ -1,0 +1,16 @@
+<form #searchForm="ngForm" (ngSubmit)="processSearch()">
+    <input type="text" name="username" size="50" 
+    placeholder="Please enter your name..." required ngModel>
+    <br/>
+    <button type="submit" [disabled]="searchForm.invalid">
+      search
+    </button>
+  
+  </form>
+  <div *ngIf="basket.length <= 0">
+    <h2>Results display here....</h2>
+  </div>
+  <div *ngIf="basket.length > 0">
+    <app-searchresult [contents]="basket">
+    </app-searchresult>
+  </div>

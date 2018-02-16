@@ -24,7 +24,14 @@ export class SearchService {
         return (this.http.get<any>(this.url,{params : queryParams})
           .take(1)
           .toPromise());
-      }
+    }
+
+    getSavedResult(query: string): Promise<any> {
+        return (this.http.get<any>(`/giphy_server/searchgiphy/${query}`)
+        .take(1)
+        .toPromise());
+
+    }
 
 }
 
