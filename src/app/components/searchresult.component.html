@@ -1,10 +1,28 @@
 
 
 <h2>Search Results</h2>
+  <!-- pager -->
+  <div ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+      <button [ngClass]="{disabled:pager.currentPage === 1}">
+          <a (click)="setPage(1)">First</a>
+      </button>
+      <button [ngClass]="{disabled:pager.currentPage === 1}">
+          <a (click)="setPage(pager.currentPage - 1)">Previous</a>
+      </button>
+      <button *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+          <a (click)="setPage(page)">{{page}}</a>
+      </button>
+      <button [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+          <a (click)="setPage(pager.currentPage + 1)">Next</a>
+      </button>
+      <button [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+          <a (click)="setPage(pager.totalPages)">Last</a>
+      </button>
+    </div>
 
 <h4>
   <ul align="left">
-    <li *ngFor="let i of contents">
+    <li *ngFor="let i of pagedItems">
         <img src="{{ i.image }}" width="96">
         <div *ngIf="i.slug != nil">
           {{ i.slug }}
@@ -12,5 +30,6 @@
         </div>
     </li>
   </ul>
+
   </h4>
 

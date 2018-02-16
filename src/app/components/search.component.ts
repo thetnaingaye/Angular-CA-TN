@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { SearchService } from '../SearchService';
+import * as _ from 'underscore';
+import { PagerService } from '../PagerService';
 
 @Component({
   selector: 'app-search',
@@ -9,11 +11,20 @@ import { SearchService } from '../SearchService';
 })
 export class SearchComponent implements OnInit {
 
+      // array of all items to be paged
+      private allItems: any[];
+ 
+      // pager object
+      pager: any = {};
+   
+      // paged items
+      pagedItems: any[];
+
   @ViewChild('searchForm') searchForm: NgForm;
   basket: any[] = [];
   userName: String ="username";
 
-  constructor(private searchService : SearchService) { }
+  constructor(private searchService : SearchService, private pagerService: PagerService) { }
 
   ngOnInit() {
 
@@ -25,6 +36,10 @@ export class SearchComponent implements OnInit {
     this.userName = this.searchForm.value.username;
     this.searchService.getSearchResult(this.searchForm.value.query,this.searchForm.value.result)
       .then((resultJson) => {
+
+     
+
+        
         console.log(">>> Result : ", resultJson);
         for(let i of resultJson.data)
         {
@@ -47,6 +62,9 @@ export class SearchComponent implements OnInit {
             disable : false
           });
           console.log( ">>> image url ", i.images["downsized"].url);
+
+          this.allItems = this.basket;
+          this.setPage(1);
         }
       })
       .catch(error => {
@@ -55,5 +73,17 @@ export class SearchComponent implements OnInit {
       });
     this.searchForm.reset();
   }
+
+  setPage(page: number) {
+    if (page < 1 || page > this.pager.totalPages) {
+        return;
+    }
+
+    // get pager object from service
+    this.pager = this.pagerService.getPager(this.allItems.length, page);
+
+    // get current page of items
+    this.pagedItems = this.allItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
+}
 
 }

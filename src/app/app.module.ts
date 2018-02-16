@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SearchComponent } from './components/search.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchService } from './SearchService';
+import { PagerService } from './PagerService';
 import { SearchresultComponent } from './components/searchresult.component';
 import { SavedsearchComponent } from './components/savedsearch.component';
 
@@ -35,7 +36,7 @@ const ROUTES: Routes = [
     HttpClientModule,
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [ SearchService],
+  providers: [ SearchService, PagerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
