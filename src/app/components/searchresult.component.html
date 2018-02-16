@@ -1,7 +1,9 @@
+
+
 <h2>Search Results</h2>
 
 <h4>
-  <ul align="left" class="pagination">
+  <ul align="left">
     <li *ngFor="let i of contents">
         <img src="{{ i.image }}" width="96">
         <div *ngIf="i.slug != nil">
@@ -11,3 +13,4 @@
     </li>
   </ul>
   </h4>
+

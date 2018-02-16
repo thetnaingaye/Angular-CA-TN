@@ -12,11 +12,11 @@ export class SearchService {
     constructor(private http: HttpClient) { }
 
     //get json object from giphy by query 
-    getSearchResult(query: string): Promise<any> {
+    getSearchResult(query: string, result: string): Promise<any> {
         const queryParams = new HttpParams()
         .set("api_key","q5PwxSZqO3myudeQowJWbWbBrieR1zFR")
         .set("q",query)
-        .set("limit","8")
+        .set("limit", result)
         .set("offset","0")
         .set("rating","G")
         .set("lang","en");

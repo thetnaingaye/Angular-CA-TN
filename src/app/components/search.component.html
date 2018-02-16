@@ -1,10 +1,18 @@
 <form #searchForm="ngForm" (ngSubmit)="processSearch()">
-  <input type="text" name="query" size="50" 
-  placeholder="Searh by any keyword eg, Trump..." required ngModel>
-  <br/>
+  <div align="right" style="padding:0px 800px 0px 0px">
+  username:
   <input type="text" name="username" size="50" 
   placeholder="Please enter your name..." required ngModel>
   <br/>
+  search:
+  <input type="text" name="query" size="50" 
+  placeholder="Search by any keyword eg, Trump..." required ngModel>
+  <br/>
+  results:
+  <input type="text" name="result" size="50" 
+  placeholder="Enter number of results..." required ngModel>
+  <br/>
+  </div>
   <button type="submit" [disabled]="searchForm.invalid">
     search
   </button>

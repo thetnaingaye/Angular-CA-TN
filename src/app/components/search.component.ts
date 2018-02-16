@@ -23,7 +23,7 @@ export class SearchComponent implements OnInit {
     this.basket = [];
 
     this.userName = this.searchForm.value.username;
-    this.searchService.getSearchResult(this.searchForm.value.query)
+    this.searchService.getSearchResult(this.searchForm.value.query,this.searchForm.value.result)
       .then((resultJson) => {
         console.log(">>> Result : ", resultJson);
         for(let i of resultJson.data)
